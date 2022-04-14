@@ -10,6 +10,9 @@
           </div>
         </router-link>
       </button>
+          <div class="repo">
+            <a href="https://github.com/bleeedbluefan/project3">Github Repository</a>
+          </div>
     </div>
     
     <div id="brand">
@@ -19,9 +22,9 @@
     </div>
     <div id="side2">
       <button id="past-button">     
-        <router-link to="/past">
+        <router-link to="/cart">
           <div class="menu-item browse">
-            <p>Past Scores</p>
+            <p>States You Know</p>
           </div>
         </router-link>
       </button>
@@ -41,6 +44,9 @@ body {
 
 }
 
+.repo {
+  margin-left: 10px;
+}
 #menu {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

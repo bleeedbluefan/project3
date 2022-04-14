@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Please Type In the State Capitals</p>
+        <p>Please Enter If You Know the State Capital</p>
         <Test :products="produce" />
     </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     },
     computed: {
         produce() {
-            return this.$root.$data.products;
+            return this.$root.$data.fullCart;
         }
     }
 

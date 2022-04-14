@@ -1,14 +1,18 @@
 <template>
 <div class="wrapper">
   <div class="products">
+      <h3 id="correct">You have {{this.$root.$data.cart.length}}/50 Correct!</h3>
     <div class="product" v-for="product in products" :key="product.id">
+    <div v-if="checkExist(product)">
       <div class="info">
         <h1>STATE:</h1>
         <h2>{{product.state}}</h2>
-        <h1>CAPITAL:</h1>
+        <h1>Do You Know the Capital?</h1>
         <i class="fas fa-search"></i><input v-model="searchText" />
-        <button class="checkButton" @click="checkScore(product)">Next -></button>
+        <button v-bind:id= "product.city" class="checkButton" @click="checkScore(product, searchText)" @>CHECK -></button>
+
       </div>
+    </div>
     </div>
   </div>
 </div>
@@ -21,9 +25,48 @@ export default {
     products: Array
   },
   methods: {
+      checkExist(product) {
+        var exists = false;
+        for(let i = 0; i < this.$root.$data.cart.length; i++) {
+            if (this.$root.$data.cart[i].product == product) {
+                exists = true;
+            }
+        }
+        if (exists) {
+            return false;
+        }   
+        else {
+            return true;
+        }
+
+      },
+      checkScore(product, searchText) {
+          var test = false;
+          var elem = document.getElementById(product.city);
+          if (product.city == searchText) {  
+                elem.innerHTML = "CORRECT!";
+                for(let i = 0; i < this.$root.$data.cart.length; i++) {
+                    if (this.$root.$data.cart[i].product == product) {
+                        test = true;
+                    }
+                }
+                if (!test) {
+                    this.$root.$data.cart.push({product});
+                }
+                test = false;
+                document.getElementById("correct").innerHTML = "You have " + this.$root.$data.cart.length + "/50 Correct!";
+                
+          }
+          else {
+              if (elem.innerHTML != "CORRECT!") {
+                  elem.innerHTML = "WRONG!";
+              }
+            
+          }
+      }
 
   },
-  computer: {
+  computed: {
 
   }
 }
