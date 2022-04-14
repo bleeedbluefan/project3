@@ -1,32 +1,79 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+<div id="app">
+  <div id="menu">
+
+    <div id="side1">
+      <button id="vacation-button">     
+        <router-link to="/test">
+          <div class="menu-item browse">
+            <p>Test Yourself</p>
+          </div>
+        </router-link>
+      </button>
+    </div>
+    
+    <div id="brand">
+      <router-link to="/">
+        <img src="/images/globe.jpg">
+      </router-link>
+    </div>
+    <div id="side2">
+      <button id="past-button">     
+        <router-link to="/past">
+          <div class="menu-item browse">
+            <p>Past Scores</p>
+          </div>
+        </router-link>
+      </button>
+    </div>
   </div>
+  <router-view />
+</div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  box-sizing: border-box;
 }
 
-nav {
-  padding: 30px;
+body {
+  margin: 50px 100px;
+
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-template-areas: "side1 brand side2";
+  margin-bottom: 50px;
+
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+#menu a {
+  color: #060d6d;
 }
+
+#brand {
+  grid-area: brand;
+  display: flex;
+  justify-content: center;
+}
+
+#side1 {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 290px;
+}
+
+#side2 {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 290px;
+}
+
+#brand img {
+  height: 300px;
+}
+
 </style>
